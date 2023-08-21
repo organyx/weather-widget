@@ -14,7 +14,7 @@ const validate = (schema: ZodSchema<any>) => {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(StatusCodes.BAD_REQUEST).json({ errors: error.errors, status: 'fail' });
+        res.status(StatusCodes.BAD_REQUEST).json({ error: error.errors[0].message, status: 'fail' });
       }
     }
   };
